@@ -19,7 +19,7 @@ The parameter format is obtained from the source (Readable) stream.
 And the opts determine sensitivity for flipping events.
 
 ```
-const SignalDetectionStream = require('../index.js')
+const SignalDetectionStream = require('signal-detection-stream')
 
 const opts = { 
     threshold: 0.1, // magnitude of the signal to indicate a flip
