@@ -1,0 +1,27 @@
+{
+  "name": "signal-detection-stream",
+  "version": "1.0.0",
+  "description": "A simple node.js signal detection stream module",
+  "main": "index.js",
+  "devDependencies": {
+    "wav": "^1.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MayamaTakeshi/signal-detection-stream.git"
+  },
+  "keywords": [
+    "signal",
+    "detection",
+    "stream"
+  ],
+  "author": "MayamaTakeshi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MayamaTakeshi/signal-detection-stream/issues"
+  },
+  "homepage": "https://github.com/MayamaTakeshi/signal-detection-stream#readme"
+}
