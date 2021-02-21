@@ -23,7 +23,7 @@ class SignalDetectionStream extends Writable {
         this.samples = 0
 
         this.signal = {
-            on: false,
+            on: null, // null indicates it didn't flip yet
             start: 0,
         }
 	}
@@ -77,13 +77,25 @@ class SignalDetectionStream extends Writable {
 
         if(on) {
             if(!this.signal.on) {
-                this.eventEmitter.emit('flip', {on: true, start: (this.samples - this.numSamples) / this.sampleRate * 1000})
+                if(this.signal.on != null){
+                    // it was off before
+                    var timeA = this.signal.start / this.sampleRate * 1000
+                    var timeB = (this.samples -this.numSamples) / this.sampleRate * 1000
+                    this.eventEmitter.emit('signal', {on: false, start: timeA, end: timeB})
+                }
+
+                this.eventEmitter.emit('signal', {on: true, start: (this.samples - this.numSamples) / this.sampleRate * 1000, end: null})
+
                 this.signal.on = true
-                this.signal.start = this.samples    
+                this.signal.start = this.samples
             }
         } else {
             if(this.signal.on) {
-                this.eventEmitter.emit('flip', {on: false, start: (this.samples - this.numSamples) / this.sampleRate * 1000})
+                var timeA = this.signal.start / this.sampleRate * 1000
+                var timeB = (this.samples -this.numSamples) / this.sampleRate * 1000
+                this.eventEmitter.emit('signal', {on: true, start: timeA, end: timeB})
+
+                this.eventEmitter.emit('signal', {on: false, start: timeB, end: null})
                 this.signal.on = false
                 this.signal.start = this.samples
             }

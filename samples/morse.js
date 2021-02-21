@@ -17,8 +17,8 @@ reader.on('format', function (format) {
 
     const sds = new SignalDetectionStream(format, opts)
 
-    sds.on("flip", data => {
-        console.log(`sds flip: ${JSON.stringify(data)}`)
+    sds.on("signal", data => {
+        console.log(`sds signal: ${JSON.stringify(data)}`)
     })
 
     sds.on("end", () => {
