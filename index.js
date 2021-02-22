@@ -29,7 +29,11 @@ class SignalDetectionStream extends Writable {
 	}
 
 	on(evt, cb) {
-		this.eventEmitter.on(evt, cb)
+        if(evt == 'signal' || evt == 'end') {
+		    this.eventEmitter.on(evt, cb)
+        } else {
+            super.on(evt, cb)
+        }
 	}
 
 	_processSamples(data) {

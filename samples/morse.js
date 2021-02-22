@@ -25,29 +25,7 @@ reader.on('format', function (format) {
         console.log(`sds end`)
     })
 
-/*
-    // piping is not working (i believe there is backpressure and the reader is not handling it. I will check this later)
-
     reader.pipe(sds)
-
-    sds.on('close', () => {
-        console.log("sds close")
-    })
-
-    sds.on('error', (error) => {
-        console.log(`sds error: ${error}`)
-    })
-*/
-
-    reader.on('data', data => {
-        //console.log(`reader data.length=${data.length}`) 
-        sds.write(data)
-    })
-
-    reader.on('end', () => {
-        //console.log(`reader end`)
-        sds.end()
-    })
 })
 
 file.pipe(reader)
