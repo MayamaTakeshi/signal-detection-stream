@@ -1,6 +1,6 @@
 {
   "name": "signal-detection-stream",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple node.js signal detection stream module",
   "main": "index.js",
   "devDependencies": {
@@ -9,7 +9,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {"node": "v12.19.0"},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MayamaTakeshi/signal-detection-stream.git"
